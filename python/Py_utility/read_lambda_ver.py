@@ -2,8 +2,8 @@ import boto3
 import os
 from datetime import datetime
 
-aws_access_key = 'AKIA2NNUTTKA5RQH5P6X'
-aws_secret_key = '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'
+aws_access_key = 'XXXXX'
+aws_secret_key = 'XXXXXX'
 aws_region = 'us-east-1'
 
 def list_lambda_versions(client, function_name):

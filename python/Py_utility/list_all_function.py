@@ -2,8 +2,8 @@ import boto3
 
 def list_all_lambda_functions():
     # Replace 'your_access_key', 'your_secret_key', and 'your_region' with your AWS credentials and region
-    aws_access_key = 'AKIA2NNUTTKA5RQH5P6X'
-    aws_secret_key = '9O5q0/alZxanQKlJ8xfNQUmODZ+sPAQZj3VFBApd'
+    aws_access_key = 'XXX'
+    aws_secret_key = 'XXX'
     aws_region = 'us-east-1'
 
 

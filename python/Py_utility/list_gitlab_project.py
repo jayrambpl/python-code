@@ -1,8 +1,8 @@
 import requests
 
 api_url = "https://gitlab.com/api/v4/"
-access_token = "glpat-dEmdQ7dNTQy1h8yxJcya"
-group_id = "64665949"
+access_token = "xxxxx"
+group_id = "xx64665949"
 
 head_str =""
 head_str = "-------------------\n"

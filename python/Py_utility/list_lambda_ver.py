@@ -2,8 +2,8 @@ import boto3
 
 def list_lambda_versions(function_name):
     # Replace 'your_access_key', 'your_secret_key', and 'your_region' with your AWS credentials and region
-    aws_access_key = 'AKIA2NNUTTKA5RQH5P6X'
-    aws_secret_key = '9O5q0/alZxanQKlJ8xfNQUmODZ+sPAQZj3VFBApd'
+    aws_access_key = 'XXXXX'
+    aws_secret_key = 'XXXXXX'
     aws_region = 'us-east-1'
 
     client = boto3.client('lambda', aws_access_key_id=aws_access_key, aws_secret_access_key=aws_secret_key, region_name=aws_region)
