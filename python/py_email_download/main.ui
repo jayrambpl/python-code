@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1003</width>
+    <height>650</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Email Downloader v1.0</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>999</width>
+      <height>607</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget#widget {
+    background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #f0f0f0, stop:1 #d0d0d0); /* Gradient background */
+    border: 1px solid #ccc; /* Light border color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Padding for content */
+}</string>
+    </property>
+    <widget class="QLabel" name="err_label">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>380</y>
+       <width>301</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;color:red</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="Line" name="line">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>62</y>
+       <width>999</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="Line" name="line_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>999</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="progressBar">
+     <property name="geometry">
+      <rect>
+       <x>12</x>
+       <y>84</y>
+       <width>963</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="value">
+      <number>24</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>12</x>
+       <y>108</y>
+       <width>139</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Downloaded File List:</string>
+     </property>
+    </widget>
+    <widget class="Line" name="line_5">
+     <property name="geometry">
+      <rect>
+       <x>2</x>
+       <y>356</y>
+       <width>1021</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="Logs_text">
+     <property name="geometry">
+      <rect>
+       <x>8</x>
+       <y>406</y>
+       <width>970</width>
+       <height>200</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPlainTextEdit {
+                background-color: #282c34;
+                color: #abb2bf;
+                font-family: Consolas, 'Courier New', monospace;
+                font-size: 12px;
+            }
+
+            QScrollBar:vertical {
+                border: 1px solid #2e3036;
+                background: #282c34;
+                width: 10px;
+                margin: 0;
+            }
+
+            QScrollBar::handle:vertical {
+                background-color: #61afef;
+                min-height: 20px;
+            }
+
+            QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+                height: 0;
+            }
+
+            QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+                background: none;
+            }</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_11">
+     <property name="geometry">
+      <rect>
+       <x>12</x>
+       <y>372</y>
+       <width>66</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Logs:</string>
+     </property>
+    </widget>
+    <widget class="QCommandLinkButton" name="cmdSaveLogs">
+     <property name="geometry">
+      <rect>
+       <x>42</x>
+       <y>362</y>
+       <width>106</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string notr="true">Save log</string>
+     </property>
+    </widget>
+    <widget class="QCommandLinkButton" name="cmdSendLogEmail">
+     <property name="geometry">
+      <rect>
+       <x>142</x>
+       <y>362</y>
+       <width>213</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string notr="true">Send log in email</string>
+     </property>
+    </widget>
+    <widget class="QListView" name="FileList">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>128</y>
+       <width>970</width>
+       <height>230</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>14</x>
+       <y>12</y>
+       <width>963</width>
+       <height>57</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label_7">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(85, 85, 255);</string>
+        </property>
+        <property name="text">
+         <string>Select App</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="rbOutlook">
+        <property name="styleSheet">
+         <string notr="true">font: 10pt &quot;Segoe UI&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Outlook</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="rbGmail">
+        <property name="styleSheet">
+         <string notr="true">font: 10pt &quot;Segoe UI&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Gmail</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_6">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(85, 85, 255);</string>
+        </property>
+        <property name="text">
+         <string>User email</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="txtEmailID">
+        <property name="styleSheet">
+         <string notr="true">font: 10pt &quot;Segoe UI&quot;;
+padding: 3px 5px;</string>
+        </property>
+        <property name="text">
+         <string>singh.jayram@in.ibm.com</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>Total Email Count:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lblEmailCount">
+        <property name="styleSheet">
+         <string notr="true">font: 700 10pt &quot;Segoe UI&quot;;
+padding: 3px 5px;</string>
+        </property>
+        <property name="text">
+         <string>000</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="txtCount">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 10pt &quot;Segoe UI&quot;;
+padding: 3px 5px;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnGetCount">
+        <property name="styleSheet">
+         <string notr="true">/* Styling for the QPushButton within the QWidget with ID &quot;widget&quot; */
+QWidget#widget QPushButton {
+    background-color: #4d90fe; /* Button background color */
+    color: #fff; /* Button text color */
+    border: 1px solid #357ae8; /* Button border color */
+    border-radius: 10px; /* Rounded corners for buttons */
+    font: 12pt &quot;MS Shell Dlg 2&quot;; /* Font size and family */
+	padding: 5px 10px;
+}
+
+QWidget#widget QPushButton:hover {
+    background-color: #357ae8; /* Darker button background on hover */
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Get Count</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnStartDownload">
+        <property name="styleSheet">
+         <string notr="true">/* Styling for the QPushButton within the QWidget with ID &quot;widget&quot; */
+QWidget#widget QPushButton {
+    background-color: #4d90fe; /* Button background color */
+    color: #fff; /* Button text color */
+    border: 1px solid #357ae8; /* Button border color */
+    border-radius: 10px; /* Rounded corners for buttons */
+    font: 12pt &quot;MS Shell Dlg 2&quot;; /* Font size and family */
+	padding: 5px 10px;
+}
+
+QWidget#widget QPushButton:hover {
+    background-color: #357ae8; /* Darker button background on hover */
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Start Download</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLCDNumber" name="lcdNumber"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="styleSheet">
+         <string notr="true">QWidget#widget QLabel#label_2 {
+    font: 9pt &quot;MS Shell Dlg 2&quot;; /* Font size and family */
+    color: #333; /* Text color */
+   
+}</string>
+        </property>
+        <property name="text">
+         <string>Admin</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="Line" name="line_6">
+     <property name="geometry">
+      <rect>
+       <x>2</x>
+       <y>394</y>
+       <width>1021</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1003</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuLoad">
+    <property name="title">
+     <string>Load</string>
+    </property>
+    <addaction name="actionLoad_Email_list"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuRun">
+    <property name="title">
+     <string>Run</string>
+    </property>
+    <addaction name="actionPING"/>
+    <addaction name="separator"/>
+    <addaction name="actionSend_Ping_Report"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionContact_Me"/>
+   </widget>
+   <widget class="QMenu" name="menuExit">
+    <property name="title">
+     <string>Close</string>
+    </property>
+    <addaction name="actionExit"/>
+   </widget>
+   <addaction name="menuLoad"/>
+   <addaction name="menuRun"/>
+   <addaction name="menuExit"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionLoad_Server_List">
+   <property name="text">
+    <string>Dash App List</string>
+   </property>
+  </action>
+  <action name="actionLoad_Service_List">
+   <property name="text">
+    <string>Tash App List</string>
+   </property>
+  </action>
+  <action name="actionLoad_Email_list">
+   <property name="text">
+    <string>Load Email List</string>
+   </property>
+  </action>
+  <action name="actionCheck_Service_Status">
+   <property name="text">
+    <string>Service Status</string>
+   </property>
+  </action>
+  <action name="actionPING">
+   <property name="text">
+    <string>Ge Count</string>
+   </property>
+  </action>
+  <action name="actionSend_Ping_Report">
+   <property name="text">
+    <string>Start Download</string>
+   </property>
+  </action>
+  <action name="actionSend_Service_Report">
+   <property name="text">
+    <string>Send Service Report</string>
+   </property>
+  </action>
+  <action name="actionContact_Me">
+   <property name="text">
+    <string>Contact Me</string>
+   </property>
+  </action>
+  <action name="actionStart_Service">
+   <property name="text">
+    <string>Start Service</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+ <designerdata>
+  <property name="gridDeltaX">
+   <number>2</number>
+  </property>
+  <property name="gridDeltaY">
+   <number>2</number>
+  </property>
+  <property name="gridSnapX">
+   <bool>true</bool>
+  </property>
+  <property name="gridSnapY">
+   <bool>true</bool>
+  </property>
+  <property name="gridVisible">
+   <bool>true</bool>
+  </property>
+ </designerdata>
+</ui>

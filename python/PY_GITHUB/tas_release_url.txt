@@ -1,0 +1,2 @@
+TasReturn=https://tasdtqual.hertz.com/TasReturn/version.properties
+TasRentalManagement=https://tasdtqual.hertz.com/TasRentalManagement/version.properties

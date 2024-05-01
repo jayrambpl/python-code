@@ -1,0 +1,21 @@
+gh api --cache 1h /repos/cli/cli/stats/contributors --jq '[
+  .[] | {
+    author: .author.login,
+    added: [ .weeks[].a ] | add,
+    deleted: [ .weeks[].d ] | add,
+    commits: [ .weeks[].c ] | add
+  }
+] | (
+  "Author\tAdded\tDeleted\tCommits\tAdd/Del ratio\n",
+  (.[] | "\(.author)\t\(.added)\t\(.deleted)\t\(.commits)\t\(.added/.deleted|.*100|round/100)")
+)' | column -ts $'\t'
+
+# Author               Added   Deleted  Commits  Add/Del ratio
+# jsjoeio              15      14       3        1.07
+# mjpieters            264     12       4        22
+# ...
+# josebalius           18002   34678    231      0.52
+# samcoe               39228   22453    298      1.75
+# probablycorey        45255   28345    338      1.6
+# vilmibm              90203   21901    783      4.12
+# mislav               107159  120155   1382     0.89

@@ -1,0 +1,5 @@
+GoldService=https://asapdtqual.hertz.com/GoldService/version.properties
+ManualRaKeyIn=https://asapdtqual.hertz.com/ManualRaKeyIn/version.properties
+Rent=https://asapdtqual.hertz.com/Rent/version.properties
+PostRent=https://asapdtqual.hertz.com/PostRent/version.properties
+ExitGate=https://asapdtqual.hertz.com/ExitGate/version.properties
