@@ -1,7 +1,7 @@
 #!/bin/bash
 
 GITHUB_USER=XXXXXXXX
-GITHUB_TOKEN=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
+GITHUB_TOKEN=XXXXXXX
 # List of repository URLs
 REPO_NAMES=(
 "common" 
