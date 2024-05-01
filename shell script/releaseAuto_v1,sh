@@ -1,0 +1,45 @@
+#!/bin/bash
+#apps_to_check=("rats-parent" "core" "asap-thermal-printer" "common-change-tracking" "common-currency-payment" "spring-ioc-container" "hibernate-utils" "core-security" "urgent-messages" "mqsupport" "user-settings" "web-service-logging" "common-directory" "eileo-rest-services" "telemetry-rest-services" "common" "car-rent" "common-cdp" "fleet-ordering-system" "guarantee" "promo-coupon" "security" "Webbase" "credit-authorization" "customer-relations-management" "tas-reference-data" "tours" "webbase" "common-res" "common-struts-test" "core-web-services" "frequent-traveler" "num-one" "signature-capture-component" "ecomm-notification-services" "ecomm-notification-services-domain" "rental-record-services-domain" "asap-rental-agreement" "asap-credit-authorization" "asap-rates" "asap-webbase" "upsell" "rental-record-services-to" "post-rent-base" "crypto-tools" "dataloader-common" "navigation-bar-shared" "refdata" "web-service-clients" "xtools" "xtools-webservice-clients")
+apps_to_check=("rats-parent" "core" "asap-thermal-printer" "common-change-tracking" )
+
+array_length=${#apps_to_check[@]}
+echo "=========================="
+echo "No. of apps to deploy : $array_length"
+
+while true; do
+    read -p "Are you sure you want to continue? (y/n): " yn
+    case $yn in
+        [Yy]* )
+            echo "OK"
+            echo "Scaning POM... please wait."
+            break;;
+        [Nn]* ) 
+            exit;;
+        * ) 
+            echo "Please answer Yes(y) or No (n).";;
+    esac    
+done
+
+NTR_NUMBER="3.3.0"
+echo "============================"
+echo "NTR Number: $NTR_NUMBER"
+echo "---------------------------"
+echo
+counter=1
+for var in "${apps_to_check[@]}"; do
+    if [ -d "$var" ]; then
+        cd "$var" || { echo "Failed to change directory to $var"; continue; }
+        echo "============================="
+        echo "$counter. $var"
+        counter=$((counter+1))
+
+        ./releaseAuto_v1.sh || { echo "Failed to release $var"; cd ..; continue; }
+        
+        # ------------
+        cd ..
+    else
+        echo "Directory '$var' not found."
+    fi
+done
+echo "========= Done ! =========="
+echo
